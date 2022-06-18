@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <h3 class="h3">Попробуй передвигать жёлтый квадрат стрелками на клавиатуре:</h3>
+  <div class="wrapper">
+    <div class="row">
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+    <div class="row">
+      <div class="cube"></div>
+      <div class="cube yellow"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+    <div class="row">
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+    <div class="row">
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+  </div>
+  <div class="button__wrapper">
+    <button class="button left" data-keycode="37">Left</button>
+    <div class="wrapper__upBottom">
+      <button class="button up" data-keycode="38">Top</button>
+      <button class="button bottom" data-keycode="40">Bottom</button>
+    </div>
+    <button class="button right" data-keycode="39">Right</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

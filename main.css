@@ -1,0 +1,59 @@
+.wrapper {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.cube {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  float:left;
+  box-sizing: border-box;
+}
+.yellow {
+  background-color: yellow;
+}
+h3 {
+  width: 200px;
+  color: blue;
+  margin: 20px auto;
+}
+body {
+  background-color: grey;
+  text-align: center;
+}
+.button__wrapper {
+  width: 120px;
+  height: 80px;
+  margin: 20px auto;
+  display: flex;
+}
+.button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 1px solid blue;
+  background-color: rgb(51, 12, 12);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 10px;
+}
+.button:hover {
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+.active {
+  opacity: 0.3;
+}
+.button:active {
+  opacity: 0.2;
+}
+.left, .right {
+  margin-top: 20px;
+}
