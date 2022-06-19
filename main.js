@@ -1,6 +1,49 @@
 var wrapper = document.querySelector('.wrapper');
 var rows = document.querySelectorAll('.row');
+
 var buttonsTouch = document.querySelectorAll('.button');
+
+function user() {
+  var num = prompt('Введите пожалуйста число, которое будет определять длинну стороны квадратного поля, в количестве квадратов:');
+  if(num >= 2) {
+    newRow(num)
+    function newRow(num){
+      var h3 = document.querySelector('.h3');
+      var buttonWrapper = document.querySelector('.button__wrapper');
+      h3.classList.remove('none');
+      wrapper.classList.remove('none');
+      buttonWrapper.classList.remove('none');
+      for(var i = 0; i < rows.length;i++){
+        if(rows.length < num) {
+          if (rows[i].classList.contains('yellow')) {
+          } else {
+            var newRow = rows[i + 1].cloneNode(true);
+            wrapper.append(newRow);
+            rows = wrapper.querySelectorAll('.row');
+          };
+        };
+      };
+      rows.forEach(function(row){
+        var cubes = row.querySelectorAll('.cube');
+        for(var i = 0; i < cubes.length; i ++) {
+          if(cubes.length < num) {
+            var newCube = document.createElement('div');
+            newCube.classList.add('cube');
+            row.append(newCube);
+            cubes = row.querySelectorAll('.cube');
+            wrapper.style.width = 50 * num + 'px';
+            wrapper.style.height = 50 * num  + 'px';
+          };
+        };
+      })
+    };
+  } else if(isNaN(num)) {
+    alert('Будьте пожалуйста внимательнее, вы ввели не число. Попробуйте ещё раз!');
+  } else {
+    alert('Вы ввели число не удовлетворяющие условиям. Число не может иметь орицательное значение или значение меньше 2.Будьте бдительны! Попробуйте ещё раз!');
+  }
+}
+user();
 
 var buttons = {
   37: {
