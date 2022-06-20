@@ -11,12 +11,13 @@
   border: 1px solid black;
   float:left;
   box-sizing: border-box;
+  cursor: pointer;
 }
 .yellow {
   background-color: yellow;
 }
 h3 {
-  width: 200px;
+  width: 400px;
   color: blue;
   margin: 20px auto;
 }
@@ -51,8 +52,11 @@ body {
 .active {
   opacity: 0.3;
 }
-.button:active {
+.button:active, {
   opacity: 0.2;
+}
+.cube:active {
+  background-color: aqua;
 }
 .left, .right {
   margin-top: 20px;

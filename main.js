@@ -1,9 +1,8 @@
 var wrapper = document.querySelector('.wrapper');
 var rows = document.querySelectorAll('.row');
-
 var buttonsTouch = document.querySelectorAll('.button');
 
-function user() {
+function init() {
   var num = prompt('Введите пожалуйста число, которое будет определять длинну стороны квадратного поля, в количестве квадратов:');
   if(num >= 2) {
     newRow(num)
@@ -39,13 +38,13 @@ function user() {
     };
   } else if(isNaN(num)) {
     alert('Будьте пожалуйста внимательнее, вы ввели не число. Попробуйте ещё раз!');
-    user();
+    init();
   } else {
     alert('Вы ввели число не удовлетворяющие условиям. Число не может иметь орицательное значение или значение меньше 2.Будьте бдительны! Попробуйте ещё раз!');
-    user();
+    init();
   }
 }
-user();
+init();
 
 var buttons = {
   37: {
@@ -106,6 +105,19 @@ function initYellowCubePosition(){
     };
   };
 };
+
+  var cubes = wrapper.querySelectorAll('.cube');
+  cubes.forEach(function(cube, idx){
+    cube.addEventListener('click', function(event){
+      cubes.forEach(function(cube, idx){
+        if(cubes[idx].classList.contains('yellow')) {
+          cubes[idx].classList.remove('yellow')
+        };
+      });
+      event.target.classList.add('yellow');
+      initYellowCubePosition();
+    });
+  });
 
 function moveCube(params){
   var yellowCube = wrapper.querySelector('.yellow');
