@@ -52,7 +52,7 @@ body {
 .active {
   opacity: 0.3;
 }
-.button:active, {
+.button:active {
   opacity: 0.2;
 }
 .cube:active {
@@ -63,4 +63,7 @@ body {
 }
 .none {
   display: none;
+}
+.wall {
+  background-color: black;
 }

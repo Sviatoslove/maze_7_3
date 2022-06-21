@@ -1,98 +1,137 @@
-var wrapper = document.querySelector('.wrapper');
-var rows = document.querySelectorAll('.row');
-var buttonsTouch = document.querySelectorAll('.button');
+var cubeMatrix = [];
+var rows = [];
+var cubes = [];
+
+var Y = {
+  active: false,
+  wall: false
+};
+
+var X = {
+  active: false,
+  wall: false
+};
 
 function init() {
   var num = prompt('Введите пожалуйста число, которое будет определять длинну стороны квадратного поля, в количестве квадратов:');
+  var min = 1;
   if(num >= 2) {
-    newRow(num)
-    function newRow(num){
+    function createCubeMatrix (num, obj, newObj) {
+      for(i = 0; i < num; i ++) {
+        var el = Object.assign({}, obj);
+        if(((i - 1) % 3) - 1 == 0 && i > 0) {
+          el.wall = true;
+        };
+        newObj.push(el);
+      };
+      cubeMatrix.push(newObj);
+    };
+
+    createCubeMatrix(num, Y, rows)
+    createCubeMatrix(num, X, cubes)
+    
+    function initYellowCube(c){
+      var cubes = document.querySelectorAll('.cube');
+      for(var i = 0; i < cubes.length; i++){
+        if(i === c) {
+          cubes[i - 1].classList.add('yellow');
+          break;
+        };
+      };
+    };
+
+    function randomC(min, num) {
+    min = Math.ceil(min);
+    max = Math.floor(num**2);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    var c = randomC(min, num);
+
+    function render (arr, num) {
+      var wrapper = document.querySelector('.wrapper');
       var h3 = document.querySelector('.h3');
       var buttonWrapper = document.querySelector('.button__wrapper');
       h3.classList.remove('none');
       wrapper.classList.remove('none');
       buttonWrapper.classList.remove('none');
-      for(var i = 0; i < rows.length;i++){
-        if(rows.length < num) {
-          if (rows[i].classList.contains('yellow')) {
-          } else {
-            var newRow = rows[i + 1].cloneNode(true);
-            wrapper.append(newRow);
-            rows = wrapper.querySelectorAll('.row');
-          };
+      arr.forEach(function(el, idx) {
+        if(idx === 0) {
+          arr[idx].forEach(function(item){
+          var div = document.createElement('div')
+          div.classList.add('row');
+          wrapper.append(div);
+          });
+        } else {
+          var rows = document.querySelectorAll('.row');
+          rows.forEach(function(z){
+            arr[idx].forEach(function(item){
+              var cube = document.createElement('div');
+              cube.classList.add('cube');
+              z.append(cube);
+            });
+          });
         };
-      };
-      rows.forEach(function(row){
-        var cubes = row.querySelectorAll('.cube');
-        for(var i = 0; i < cubes.length; i ++) {
-          if(cubes.length < num) {
-            var newCube = document.createElement('div');
-            newCube.classList.add('cube');
-            row.append(newCube);
-            cubes = row.querySelectorAll('.cube');
-            wrapper.style.width = 50 * num + 'px';
-            wrapper.style.height = 50 * num  + 'px';
-          };
-        };
-      })
+      });
+      wrapper.style.width = 50 * num + 'px';
+      wrapper.style.height = 50 * num  + 'px';
+      initYellowCube(c);
     };
+    
+    render(cubeMatrix, num);
+    
   } else if(isNaN(num)) {
     alert('Будьте пожалуйста внимательнее, вы ввели не число. Попробуйте ещё раз!');
     init();
   } else {
-    alert('Вы ввели число не удовлетворяющие условиям. Число не может иметь орицательное значение или значение меньше 2.Будьте бдительны! Попробуйте ещё раз!');
+    alert('Вы ввели число не удовлетворяющие условиям. Число не может иметь орицательное значение или значение меньше 2. Будьте бдительны! Попробуйте ещё раз!');
     init();
   }
 }
 init();
 
-var buttons = {
-  37: {
+var direction = {
+  LEFT: {
     name: 'Left',
     x: -1,
     y: null
   },
-  65: {
-    name: 'Left',
-    x: -1,
-    y: null
-  },
-  38: {
+  TOP: {
     name: 'Top',
     x: null,
     y: -1
   },
-  87: {
-    name: 'Top',
-    x: null,
-    y: -1
-  },
-  39: {
+  RIGHT: {
     name: 'Right',
     x: 1,
     y: null
   },
-  68: {
-    name: 'Right',
-    x: 1,
-    y: null
-  },
-  40: {
+  BUTTOM: {
     name: 'Bottom',
     x: null,
-    y: 1
-  },
-  83: {
-    name: 'Bottom',
-    x: null,
-    y: 1
+    y: 1,
   }
+}
+
+var buttons = {
+  37: direction.LEFT,
+  65: direction.LEFT,
+  38: direction.TOP,
+  87: direction.TOP,
+  39: direction.RIGHT,
+  68: direction.RIGHT,
+  40: direction.BUTTOM,
+  83: direction.BUTTOM,
 };
 
 var yellowCubePosition = {
   x: 0,
   y: 0
 };
+
+var wrapper = document.querySelector('.wrapper');
+var rows = document.querySelectorAll('.row');
+var buttonsTouch = document.querySelectorAll('.button');
 
 function initYellowCubePosition(){
   for(var y = 0; y < rows.length; y++){
@@ -106,18 +145,18 @@ function initYellowCubePosition(){
   };
 };
 
-  var cubes = wrapper.querySelectorAll('.cube');
-  cubes.forEach(function(cube, idx){
-    cube.addEventListener('click', function(event){
-      cubes.forEach(function(cube, idx){
-        if(cubes[idx].classList.contains('yellow')) {
-          cubes[idx].classList.remove('yellow')
-        };
-      });
-      event.target.classList.add('yellow');
-      initYellowCubePosition();
+var cubes = wrapper.querySelectorAll('.cube');
+cubes.forEach(function(cube, idx){
+  cube.addEventListener('click', function(event){
+    cubes.forEach(function(cube, idx){
+      if(cubes[idx].classList.contains('yellow')) {
+        cubes[idx].classList.remove('yellow')
+      };
     });
+    event.target.classList.add('yellow');
+    initYellowCubePosition();
   });
+});
 
 function moveCube(params){
   var yellowCube = wrapper.querySelector('.yellow');
