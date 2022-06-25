@@ -170,13 +170,13 @@ function renderСubeMatrix(){
         copyCell.wall = true;
       }else if(x === wall.z) {
         copyCell.wall = true;
-      }else if(x === wall.a) {
-        copyCell.wall = true;
       }else if(x === wall.e && count >= 20) {
         copyCell.wall = true;
-      }else if(x === wall.b) {
+      }else if(x === wall.a) {
         copyCell.wall = true;
       }else if(x === wall.f && count >= 25) {
+        copyCell.wall = true;
+      }else if(x === wall.b) {
         copyCell.wall = true;
       }else if(x === wall.c) {
         copyCell.wall = true;
