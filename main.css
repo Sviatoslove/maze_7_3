@@ -1,3 +1,6 @@
+.container {
+  margin: 0 auto;
+}
 .wrapper {
   width: 100px;
   height: 100px;
@@ -14,26 +17,27 @@
   cursor: pointer;
 }
 .yellow {
-  background-color: yellow;
+  background-color: rgb(255, 153, 0);
 }
 h3 {
-  width: 400px;
+  width: 1005px;
   color: blue;
   margin: 20px auto;
+  font-size: 33px;
 }
 body {
   background-color: grey;
   text-align: center;
 }
 .button__wrapper {
-  width: 120px;
-  height: 80px;
+  width: 300px;
+  height: 200px;
   margin: 20px auto;
   display: flex;
 }
 .button {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +47,8 @@ body {
   color: #fff;
   cursor: pointer;
   border-radius: 8px;
-  font-size: 10px;
+  font-size: 26px;
+  color: rgb(73, 228, 255);
 }
 .button:hover {
   opacity: 0.7;
@@ -59,11 +64,19 @@ body {
   background-color: aqua;
 }
 .left, .right {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .none {
   display: none;
 }
 .wall {
-  background-color: black;
+  background-color: rgb(0, 157, 255);
+}
+.finish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: rgb(255, 98, 0);
+  padding-bottom: 5px;
 }
