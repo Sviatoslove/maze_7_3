@@ -290,40 +290,6 @@ function getFinish(){
   });
 };
 
-
-// cubeMatrix.forEach(function(row, idx){
-//   var rows = [];
-//   row.forEach(function(cell){
-//     rows.push(cell);
-//     rows.addEventListener('click', function(event){
-//         rows.forEach(function(cube, idx){
-//         if(rows[idx].active) {
-//           rows[idx].active = false;
-//         };
-//       });
-//       event.target.active = true;
-//       initYellowCubePosition();
-//     });
-//   });
-// });
-
-// var cubes = wrapper.querySelectorAll('.cube');
-// cubes.forEach(function(cube, idx){
-//   cube.addEventListener('click', function(event){
-//     cubeMatrix.forEach(function(row, idx){
-//     console.log(cubeMatrix[idx].active)
-
-//       if(cubeMatrix[idx].active) {
-
-//         cubeMatrix[idx].active = false;
-//       };
-//     });
-//     console.log(event.target)
-//     event.target.classList.add('yellow');
-//     initYellowCubePosition();
-//   });
-// });
-
 document.addEventListener('keydown', function(e){
   initYellowCubePosition();
   if(buttons[e.keyCode]) {
